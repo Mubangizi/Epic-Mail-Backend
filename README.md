@@ -52,6 +52,6 @@ Run the application.
 
 ##### Testing and Coverage
 
-This app uses `nose` to run tests.
+This app uses `pytest` to run tests.
 
-`nosetests --with-coverage --cover-package=routes`
+`pytest`

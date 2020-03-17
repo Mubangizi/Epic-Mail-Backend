@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 from app.routes import api
 
@@ -15,6 +16,8 @@ def create_app(config_name):
 
     app = Flask(__name__)
 
+     # allow cross-domain requests
+    CORS(app)
 
     # use running config settings on app
     app.config.from_object(app_config[config_name])
