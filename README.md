@@ -7,7 +7,7 @@ Follow these steps to have a local running copy of the app.
 
 ##### Clone The Repo
 
-`git clone https://github.com/ckwagaba/osprey-backend.git`
+`git clone https://github.com/Mubangizi/Epic-Mail-Backend.git`
 
 If `master` is not up to date, `git checkout develop`. However, note that code on develop could be having some minor issues to sort.
 
