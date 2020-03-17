@@ -1,3 +1,5 @@
+![Python application](https://github.com/Mubangizi/Epic-Mail-Backend/workflows/Python%20application/badge.svg?branch=develop)
+
 # Epic-Mail-Backend
 User mailing system
 
@@ -17,7 +19,7 @@ Here's a great resource to check out:
 
 [How To Install and Use PostgreSQL](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
 
-Create the two databases `epic_mail` (for development) and `epic_mail_db` (for unit testing).
+Create the two databases `epicmail` (for development) and `epicmail_test_db` (for unit testing).
 
 ##### Create a Virtual Environment
 
@@ -34,7 +36,7 @@ Create a `.env` file (which defines the environment variables used) at the root 
 Add the following details, customizing as needed.
 
 ```
-export FLASK_APP=app.py
+export FLASK_APP=server.py
 export FLASK_ENV=development
 export FLASK_DEBUG=1
 export FLASK_RUN_PORT=5000
