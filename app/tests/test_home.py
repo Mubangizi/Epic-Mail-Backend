@@ -1,7 +1,5 @@
 import unittest 
 
-import pytest
-
 from server import create_app
 
 class MyTestClass(unittest.TestCase): 
