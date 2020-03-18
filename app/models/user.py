@@ -1,4 +1,3 @@
-from sqlalchemy import text as sa_text
 from flask_bcrypt import Bcrypt
 from datetime import timedelta
 
@@ -20,10 +19,10 @@ class User(ParentModel):
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
 
 
-    def __init__(self, email, name, password):
+    def __init__(self, email, username, password):
         """ initialize with email, username and password """
         self.email = email
-        self.username = name
+        self.username = username
         self.password = Bcrypt().generate_password_hash(password).decode()
 
     def password_is_valid(self, password):

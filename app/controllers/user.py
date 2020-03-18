@@ -1,7 +1,5 @@
 import json
-import os
 from flask_restful import Resource, request
-from flask_bcrypt import Bcrypt
 from app.schemas import UserSchema
 from app.models.user import User
 
@@ -16,7 +14,7 @@ class UsersView(Resource):
         user_schema = UserSchema()
 
         user_data = request.get_json()
-
+        
         # Validate user data
         validated_user_data, errors = user_schema.load(user_data)
 
