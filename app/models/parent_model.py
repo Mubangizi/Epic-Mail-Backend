@@ -3,7 +3,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from ..models import db
 
 
-class ModelMixin(db.Model):
+class ParentModel(db.Model):
 
     __abstract__ = True
 
