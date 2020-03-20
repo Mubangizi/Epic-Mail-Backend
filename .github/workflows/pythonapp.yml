@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.8
-      env:
+    - env:
         FLASK_ENV: ${{ secrets.FLASK_ENV }}
     - name: Install dependencies
       run: |
