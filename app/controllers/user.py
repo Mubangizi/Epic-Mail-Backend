@@ -63,8 +63,35 @@ class UsersView(Resource):
             data=dict(users=json.loads(users_data))
         ), 200
 
+class UserlogIn(Resource):
+    """
+    User Login
+    """
+    def post(self):
+        user_schema = UserSchema(only=("email", "password"))
 
+        login_data = request.get_json()
 
+        validated_user_data, errors = user_schema.load(login_data)
+
+        if errors:
+            return dict(status='fail', message=errors), 400
+        
+        email = validated_user_data.get('email', None)
+        password = validated_user_data.get('password', None)
+
+        user = User.find_first(email=email)
+
+        if not user:
+            return dict(status='fail', message="login failed"), 401
+        
+        user_data, errors = user_schema.dumps(user)
+
+        if errors:
+            return dict(status='fail', message=errors), 400
+
+        return dict(status='Success', message=f"User { user.username } logged in Successfully. "), 200
+User
 class UserDetailView(Resource):
 
     def get(self, user_id):
@@ -112,7 +139,6 @@ class UserDetailView(Resource):
         
         if 'password' in validated_update_data:
             user.password = validated_update_data['password']
-
 
         updated_user = user.save()
 
