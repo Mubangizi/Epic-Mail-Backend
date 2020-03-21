@@ -3,7 +3,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from ..models import db
 
 
-class ParentModel(db.Model):
+class BaseModel(db.Model):
 
     __abstract__ = True
 

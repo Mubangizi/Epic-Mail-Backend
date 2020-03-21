@@ -1,12 +1,13 @@
 from flask_bcrypt import Bcrypt
 from datetime import timedelta
+from sqlalchemy.orm import relationship, backref
 
 from ..models import db
 
-from app.models.parent_model import ParentModel
+from app.models.base_model import BaseModel
 
 
-class User(ParentModel):
+class User(BaseModel):
     """ user table definition """
 
     _tablename_ = "users"
@@ -17,6 +18,7 @@ class User(ParentModel):
     username = db.Column(db.String(256), nullable=False, default="")
     password = db.Column(db.String(256), nullable=False, default="")
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
+    messages = relationship("Message", backref="users")
 
 
     def __init__(self, email, username, password):

@@ -2,3 +2,4 @@
 
 from .index import IndexView
 from .user import (UsersView, UserDetailView, UserSignup, UserlogIn)
+from .message import (MessageView)
