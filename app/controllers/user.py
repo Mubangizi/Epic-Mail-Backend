@@ -4,7 +4,7 @@ from app.schemas import UserSchema
 from app.models.user import User
 
 
-class UsersView(Resource):
+class UserSignup(Resource):
 
     def post(self):
         """
@@ -43,7 +43,7 @@ class UsersView(Resource):
         return dict(status='success', data=dict(user=json.loads(new_user_data))), 201
 
 
-
+class UsersView(Resource):
     def get(self):
         """
         Getting All users
@@ -83,8 +83,13 @@ class UserlogIn(Resource):
         user = User.find_first(email=email)
 
         if not user:
-            return dict(status='fail', message="login failed"), 401
+            return dict(status='fail', message="login failed, Wrong Email"), 401
         
+        user_pass = user.password_is_valid(password)
+
+        if not user_pass:
+            return dict(status ='fail', message="login failed, Wrong Password"), 401
+
         user_data, errors = user_schema.dumps(user)
 
         if errors:

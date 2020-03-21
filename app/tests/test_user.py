@@ -37,7 +37,7 @@ class UserTestCase(unittest.TestCase):
     def test_sign_up(self):
         """ test user creation """
 
-        response = self.client.post('/users', json=self.test_user)
+        response = self.client.post('/auth/signup', json=self.test_user)
 
         self.assertEqual(response.status_code, 201)
         self.assertIn('test_email@testdomain.com', str(response.data))
@@ -46,10 +46,10 @@ class UserTestCase(unittest.TestCase):
     def test_sign_up_existing_email(self):
         """ test email exists """
 
-        response1 =self.client.post('/users', json=self.test_user)
+        response1 =self.client.post('/auth/signup', json=self.test_user)
         self.assertEqual(response1.status_code, 201)
 
-        response2 =self.client.post('/users', json=self.test_user)
+        response2 =self.client.post('/auth/signup', json=self.test_user)
         self.assertEqual(response2.status_code, 400)
         self.assertIn('Email test_email@testdomain.com already in use.', str(response2.data))
 
@@ -61,7 +61,7 @@ class UserTestCase(unittest.TestCase):
             'username': 'test_username',
             'password': 'test_password'
         }
-        response =self.client.post('/users', json=test_user_wrong_email)
+        response =self.client.post('/auth/signup', json=test_user_wrong_email)
         self.assertEqual(response.status_code, 400)
 
     def test_get_all_users(self):
